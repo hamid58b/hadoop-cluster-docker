@@ -30,21 +30,21 @@ RUN mkdir -p ~/hdfs/namenode && \
 COPY config/* /tmp/
 
 RUN mv /tmp/ssh_config ~/.ssh/config && \
-    # mv /tmp/hadoop-env.sh /usr/local/hadoop/etc/hadoop/hadoop-env.sh && \
-    # mv /tmp/hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
-    # mv /tmp/core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml && \
-    # mv /tmp/mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
-    mv /tmp/yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
-    mv /tmp/slaves $HADOOP_HOME/etc/hadoop/slaves && \
+    mv /tmp/hadoop-env.sh /usr/local/hadoop/etc/hadoop/hadoop-env.sh && \
+    mv /tmp/hdfs-site.xml $HADOOP_HOME/conf/hdfs-site.xml && \
+    mv /tmp/core-site.xml $HADOOP_HOME/conf/core-site.xml && \
+    mv /tmp/mapred-site.xml $HADOOP_HOME/conf/mapred-site.xml && \
+    # mv /tmp/yarn-site.xml $HADOOP_HOME/conf/yarn-site.xml && \  # disable Yarn configs for hadoop 1.2.1
+    mv /tmp/slaves $HADOOP_HOME/conf/slaves && \
     mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
     mv /tmp/run-wordcount.sh ~/run-wordcount.sh
 
 RUN chmod +x ~/start-hadoop.sh && \
     chmod +x ~/run-wordcount.sh && \
-    chmod +x $HADOOP_HOME/sbin/start-dfs.sh && \
-    chmod +x $HADOOP_HOME/sbin/start-yarn.sh
+    chmod +x $HADOOP_HOME/bin/start-all.sh && \
+    # chmod +x $HADOOP_HOME/bin/start-yarn.sh   #FIXME? Where is this on hadoop 1.2.1  (disabled for 1.2.1)
 
 # format namenode
-RUN /usr/local/hadoop/bin/hdfs namenode -format
+RUN $HADOOP_HOME/bin/hadoop namenode -format
 
 CMD [ "sh", "-c", "service ssh start; bash"]

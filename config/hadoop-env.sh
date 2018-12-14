@@ -107,7 +107,7 @@
 
 # The java implementation to use.  Required.
 # export JAVA_HOME=/usr/lib/j2sdk1.5-sun
-export JAVA_HOME=/usr/java/default
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export HADOOP_OPTS=-Djava.net.preferIPv4Stack=true
 
 # Extra Java CLASSPATH elements.  Optional.

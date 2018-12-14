@@ -2,11 +2,10 @@
 
 echo -e "\n"
 
-$HADOOP_HOME/sbin/start-dfs.sh
+$HADOOP_HOME/bin/start-all.sh
 
 echo -e "\n"
 
-$HADOOP_HOME/sbin/start-yarn.sh
+$HADOOP_HOME/bin/start-yarn.sh
 
 echo -e "\n"
-
