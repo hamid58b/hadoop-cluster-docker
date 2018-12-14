@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <configuration>
-    <property>
+    <!-- <property>
         <name>mapreduce.framework.name</name>
         <value>yarn</value>
-    </property>
+    </property> -->
 
     <property>
         <name>mapred.job.tracker</name>
