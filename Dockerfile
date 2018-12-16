@@ -24,9 +24,10 @@ ENV PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
-RUN mkdir -p ~/hdfs/namenode && \
-    mkdir -p ~/hdfs/datanode && \
+RUN mkdir -p /usr/local/hadoop_store/hdfs/namenode && \
+    mkdir -p /usr/local/hadoop_store/hdfs/datanode && \
     mkdir $HADOOP_HOME/logs
+
 
 COPY config/* /tmp/
 
