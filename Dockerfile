@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 
 
-MAINTAINER KiwenLau <kiwenlau@gmail.com>
+MAINTAINER hamidb <hbagheri@iastate.edu>
 
 WORKDIR /root
 
@@ -30,6 +30,7 @@ RUN mkdir -p /usr/local/hadoop_store/hdfs/namenode && \
 
 
 COPY config/* /tmp/
+COPY lib/* /tmp/
 
 RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/hadoop-env.sh $HADOOP_HOME/conf/hadoop-env.sh && \
@@ -39,7 +40,8 @@ RUN mv /tmp/ssh_config ~/.ssh/config && \
     # mv /tmp/yarn-site.xml $HADOOP_HOME/conf/yarn-site.xml && \  # disable Yarn configs for hadoop 1.2.1
     mv /tmp/slaves $HADOOP_HOME/conf/slaves && \
     mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
-    mv /tmp/run-wordcount.sh ~/run-wordcount.sh
+    mv /tmp/run-wordcount.sh ~/run-wordcount.sh && \
+    mv /tmp/protobuf-java-2.5.0.jar $JAVA_HOME/jre/lib/ext/
 
 RUN chmod +x ~/start-hadoop.sh && \
     #chmod +x ~/run-wordcount.sh && \
