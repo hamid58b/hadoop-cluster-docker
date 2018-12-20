@@ -44,12 +44,24 @@ root@hadoop-master:~#
 ```
 - start 3 containers with 1 master and 2 slaves
 - you will get into the /root directory of hadoop-master container
+- see the start-container.sh file. The ```-v ~/Documents/:/docs \``` argument shows that the ~/Documents folder on the host will be mapped to the /docs/ on the containers. You can modify this folder accordingly.
 
 ##### start hadoop
 
 ```
 ./start-hadoop.sh
 ```
+
+##### Run Boa query on hadoop
+```
+hadoop jar /path/to/the/jarfile/Query.jar boa.Query /repcache/liveg/  /tmp/output_01
+
+```
+- Note that the last 2 arguments are paths on the hadoop ```/repcache/liveg/``` is the path of dataset  
+and ```/tmp/output_01``` would be the path of the Boa output
+- Before running the Boa query you need to put the *.seq files in the ```/repcache/liveg/``` folder on the hadoop by
+  - ``` hadoop fs -put /path/to/the/seq_files  /repcache/liveg/```
+
 
 
 <!-- ### Arbitrary size Hadoop cluster
