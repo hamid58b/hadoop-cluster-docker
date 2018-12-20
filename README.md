@@ -2,26 +2,32 @@
 
 ### 3 Nodes Hadoop Cluster
 
-##### 1. pull docker image
+<!-- ##### 1. pull docker image
 
 ```
 sudo docker pull docker push hamidb/hadoop-1x-cluster:latest
 
-```
+``` -->
 
-##### 2. clone github repository
+#####  clone Github repository
 
 ```
 git clone https://github.com/hamid58b/hadoop-cluster-docker.git
 ```
 
-##### 3. create hadoop network
+##### create hadoop network
 
 ```
 sudo docker network create --driver=bridge hadoop
 ```
 
-##### 4. start container
+##### build docker container
+```
+docker build -t docker-hadoop-1.2.1 .
+```
+
+
+#####  start container
 
 ```
 cd hadoop-cluster-docker
@@ -39,34 +45,14 @@ root@hadoop-master:~#
 - start 3 containers with 1 master and 2 slaves
 - you will get into the /root directory of hadoop-master container
 
-##### 5. start hadoop
+##### start hadoop
 
 ```
 ./start-hadoop.sh
 ```
 
-##### 6. run wordcount
 
-```
-./run-wordcount.sh
-```
-
-**output**
-
-```
-input file1.txt:
-Hello Hadoop
-
-input file2.txt:
-Hello Docker
-
-wordcount output:
-Docker    1
-Hadoop    1
-Hello    2
-```
-
-### Arbitrary size Hadoop cluster
+<!-- ### Arbitrary size Hadoop cluster
 
 ##### 1. pull docker images and clone github repository
 
@@ -90,4 +76,4 @@ sudo ./start-container.sh 5
 
 ##### 4. run hadoop cluster
 
-do 5~6 like section A
+do 5~6 like section A -->
