@@ -3,6 +3,6 @@
 echo ""
 
 echo -e "\nbuild docker hadoop image\n"
-sudo docker build -t docker-hadoop-1.2.1 .
+sudo docker build -t kiwenlau/hadoop:1.0 .
 
 echo ""

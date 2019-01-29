@@ -11,10 +11,10 @@ sudo docker run -itd \
                 --net=hadoop \
                 -p 50070:50070 \
                 -p 8088:8088 \
-                -v ~/Documents/:/docs \
+		-v ~/Documents/:/docs/ \
                 --name hadoop-master \
                 --hostname hadoop-master \
-                docker-hadoop-1.2.1 &> /dev/null
+                kiwenlau/hadoop:1.0 &> /dev/null
 
 
 # start hadoop slave container
@@ -27,7 +27,7 @@ do
 	                --net=hadoop \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
-	                docker-hadoop-1.2.1 &> /dev/null
+	                kiwenlau/hadoop:1.0 &> /dev/null
 	i=$(( $i + 1 ))
 done
 
